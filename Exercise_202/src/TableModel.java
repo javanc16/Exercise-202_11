@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 /*
@@ -13,22 +14,49 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableModel extends AbstractTableModel{
 
-    private ArrayList<>
+    private ArrayList<Sender> sender = new ArrayList<>();
+    private static String[] colNames = {"Sender", "Frequenz", "Band"};
     
+    private boolean hideLast = false;
+
+    public void setHideLast(boolean hideLast) {
+        this.hideLast = hideLast;
+        fireTableStructureChanged();
+    }
+    
+    
+    
+    public void add(Sender s) {
+        sender.add(s);
+        fireTableDataChanged();
+    }
+    
+    @Override
+    public String getColumnName(int i) {
+        return colNames[i];
+    }
     
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sender.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return hideLast ? colNames.length -1 : colNames.length;
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object getValueAt(int row, int col) {
+        Sender s = sender.get(row);
+        return s;
+        //move switch to renderer
+//        switch(col){
+//            case 0: return s.getSender();
+//            case 1: return s.getFrequenz();
+//            case 2: return s.getBand();
+//            default: return "???";
+//        }
     }
     
 }

@@ -17,16 +17,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hinzufuegenActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Band_verstecken">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Band_versteckenActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Band_anzeigen">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Band_anzeigenActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

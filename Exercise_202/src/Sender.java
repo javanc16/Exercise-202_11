@@ -14,6 +14,23 @@ public class Sender {
     private String band;
     
     public Sender(String sender, double frequenz, String band) {
-        
+        this.sender = sender;
+        this.frequenz = frequenz;
+        this.band = band;
     }
+
+    public String getBand() {
+        return band;
+    }
+
+    public double getFrequenz() {
+        return frequenz;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    
+    
 }

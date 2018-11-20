@@ -9,12 +9,22 @@
  * @author ich
  */
 public class GUI extends javax.swing.JFrame {
-
+    
+    private TableModel model = new TableModel();
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        jTable1.setModel(model);
+        jTable1.setDefaultRenderer(Object.class, new TableRenderer());
+        
+        // model.add(new Sender("Test", 89.2, "FM"));
+        // model.add(new Sender("Test", 89.2, "FM"));
+        // model.add(new Sender("Test", 89.2, "AM"));
+        
+        // model.setHideLast(true);
     }
 
     /**
@@ -37,12 +47,27 @@ public class GUI extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         hinzufuegen.setText("jMenuItem1");
+        hinzufuegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hinzufuegenActionPerformed(evt);
+            }
+        });
         jMenu1.add(hinzufuegen);
 
         Band_verstecken.setText("jMenuItem1");
+        Band_verstecken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Band_versteckenActionPerformed(evt);
+            }
+        });
         jMenu1.add(Band_verstecken);
 
         Band_anzeigen.setText("jMenuItem1");
+        Band_anzeigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Band_anzeigenActionPerformed(evt);
+            }
+        });
         jMenu1.add(Band_anzeigen);
 
         jPopupMenu1.add(jMenu1);
@@ -83,6 +108,25 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void hinzufuegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hinzufuegenActionPerformed
+        SenderDlg dialog = new SenderDlg(this,true);
+        dialog.setVisible(true);
+        
+        if( dialog.isOk()){
+            model.add(dialog.getSender());
+            
+            //todo add to tablemodel
+        }
+    }//GEN-LAST:event_hinzufuegenActionPerformed
+
+    private void Band_versteckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Band_versteckenActionPerformed
+        model.setHideLast(true);
+    }//GEN-LAST:event_Band_versteckenActionPerformed
+
+    private void Band_anzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Band_anzeigenActionPerformed
+        model.setHideLast(false);
+    }//GEN-LAST:event_Band_anzeigenActionPerformed
 
     /**
      * @param args the command line arguments
